@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:contentDescription="@null"
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Current location"
+        android:text="@string/current_location"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintBottom_toTopOf="@+id/fragment_maps_current_location_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Paris"
+        tools:text="Paris"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/fragment_maps_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +54,7 @@
         android:layout_marginStart="8dp"
         android:drawablePadding="8dp"
         android:drawableStart="@drawable/ic_map_white_24dp"
-        android:text="Open Google maps"
+        android:text="@string/open_google_maps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
