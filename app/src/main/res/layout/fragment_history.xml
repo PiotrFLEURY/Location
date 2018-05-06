@@ -6,17 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_locate"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:clickable="true"
-        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_location_on_accent_24dp" />
+        android:elevation="4sp"
+        android:translationZ="4sp">
+
+        <ProgressBar
+            android:id="@+id/progress_locate"
+            android:layout_width="76sp"
+            android:layout_height="76sp"
+            android:indeterminateBehavior="cycle"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/primary_dark"
+            android:visibility="invisible"
+            tools:visibility="visible"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_locate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16sp"
+            android:clickable="true"
+            app:fabSize="normal"
+            app:srcCompat="@drawable/ic_location_on_accent_24dp"
+            android:focusable="true"
+            android:elevation="8sp"
+            android:translationZ="8sp"/>
+
+        <ImageView
+            android:id="@+id/iv_locate_done"
+            android:layout_width="56sp"
+            android:layout_height="56sp"
+            android:layout_gravity="center"
+            android:elevation="8sp"
+            android:translationZ="8sp"
+            android:alpha="0"
+            android:src="@drawable/fab_done"/>
+
+    </FrameLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_history"

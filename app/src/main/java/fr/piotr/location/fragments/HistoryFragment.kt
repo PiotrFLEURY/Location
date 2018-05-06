@@ -1,5 +1,6 @@
 package fr.piotr.location.fragments
 
+import android.animation.Animator
 import android.app.AlertDialog
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -19,6 +20,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -126,7 +129,66 @@ class HistoryFragment: Fragment(), MyLocationListener {
         history.removeEventListener(historyChildEventListener)
     }
 
+    private fun showProgress(){
+        progress_locate.visibility = View.VISIBLE
+    }
+
+    private fun hideProgress(){
+        progress_locate.visibility = View.INVISIBLE
+    }
+
+    private fun showDone() {
+        iv_locate_done.animate().alpha(1f)
+                .setDuration(400)
+                .setInterpolator(DecelerateInterpolator())
+                .setListener(object:Animator.AnimatorListener{
+            override fun onAnimationRepeat(animation: Animator?) {
+                //
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                hideDone()
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+                iv_locate_done.alpha = 0f
+            }
+
+            override fun onAnimationStart(animation: Animator?) {
+                iv_locate_done.alpha = 0f
+            }
+
+        }).start()
+    }
+
+    private fun hideDone() {
+        iv_locate_done.animate()
+                .alpha(0f)
+                .setStartDelay(2000)
+                .setDuration(800)
+                .setInterpolator(AccelerateInterpolator())
+                .setListener(object:Animator.AnimatorListener{
+                    override fun onAnimationRepeat(animation: Animator?) {
+                        //
+                    }
+
+                    override fun onAnimationEnd(animation: Animator?) {
+                        iv_locate_done.alpha = 0f
+                    }
+
+                    override fun onAnimationCancel(animation: Animator?) {
+                        iv_locate_done.alpha = 0f
+                    }
+
+                    override fun onAnimationStart(animation: Animator?) {
+                        iv_locate_done.alpha = 0f
+                    }
+
+                }).start()
+    }
+
     private fun locateMe() {
+        showProgress()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && checkSelfPermission(activity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -175,6 +237,10 @@ class HistoryFragment: Fragment(), MyLocationListener {
 
     override fun fireLocationUpdate(location: Location) {
         Log.d(TAG, "Location updated")
+
+        hideProgress()
+        showDone()
+
         currentLocation = asCoordinates(location)
 
         val locationManager = activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
