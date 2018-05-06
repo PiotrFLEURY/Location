@@ -53,4 +53,5 @@
     <string name="ok">OK</string>
     <string name="gps_disabled_message">You have to activate GPS to continue</string>
     <string name="enable_gps">Activer le GPS</string>
+    <string name="profile">Profile</string>
 </resources>
