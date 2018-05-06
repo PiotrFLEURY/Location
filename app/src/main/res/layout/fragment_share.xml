@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey200">
+
+    <TextView
+        android:id="@+id/tv_share_with_another_app"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/selectable_white"
+        android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+        android:drawablePadding="8sp"
+        android:drawableStart="@drawable/ic_apps_black_24dp"
+        android:drawableTint="@color/grey8"
+        android:gravity="center_vertical"
+        android:padding="16sp"
+        android:text="@string/share_with_another_app"
+        app:layout_constraintBottom_toTopOf="@+id/tv_share_with_somebody"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_share_with_somebody"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/selectable_white"
+        android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+        android:drawablePadding="8sp"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:drawableTint="@color/grey8"
+        android:gravity="center_vertical"
+        android:padding="16sp"
+        android:text="@string/share_with_somebody"
+        app:layout_constraintBottom_toTopOf="@+id/tv_request_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_share_with_another_app"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/share_circle_128" />
+
+    <TextView
+        android:id="@+id/tv_request_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/selectable_white"
+        android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+        android:drawablePadding="8sp"
+        android:drawableStart="@drawable/ic_search_black_24dp"
+        android:drawableTint="@color/grey8"
+        android:gravity="center_vertical"
+        android:padding="16sp"
+        android:text="@string/request_location"
+        app:layout_constraintBottom_toTopOf="@+id/tv_my_requests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_my_requests"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selectable_white"
+        android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+        android:drawablePadding="8sp"
+        android:drawableStart="@drawable/ic_view_list_black_24dp"
+        android:drawableTint="@color/grey8"
+        android:gravity="center_vertical"
+        android:padding="16sp"
+        android:text="@string/my_requests"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

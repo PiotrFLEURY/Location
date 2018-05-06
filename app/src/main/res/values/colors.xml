@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#FFC107</color>
+    <color name="primary_dark">#FFA000</color>
+    <color name="primary_light">#FFECB3</color>
+    <color name="accent">#448AFF</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#BDBDBD</color>
+
+    <color name="white">#FFF</color>
+
+    <color name="greyD">#DDD</color>
+    <color name="greyC">#CCC</color>
+    <color name="greyB">#BBB</color>
+    <color name="greyA">#AAA</color>
+    <color name="grey9">#999</color>
+    <color name="grey8">#888</color>
+
+    <color name="grey500">#9E9E9E</color>
+    <color name="grey400">#BDBDBD</color>
+    <color name="grey300">#E0E0E0</color>
+    <color name="grey200">#EEEEEE</color>
+    <color name="grey100">#F5F5F5</color>
+    <color name="grey50">#FAFAFA</color>
+
+    <color name="black">#000</color>
+    <color name="black80">#80000000</color>
+    <color name="black20">#20000000</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>

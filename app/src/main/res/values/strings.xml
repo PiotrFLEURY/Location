@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Location</string>
+    <string name="locate_me">Locate me</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="maps">Maps</string>
+    <string name="share">Share</string>
+    <string name="history">History</string>
+    <string name="share_with_another_app">Share with another app</string>
+    <string name="share_with_somebody">Share with somebody</string>
+    <string name="request_location">Request location</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="welcome_user">Welcome %s !</string>
+    <string name="connection_failed">Connection failed</string>
+    <string name="new_location_request_from">New location request from %s</string>
+    <string name="new_request_notification_accept">Accept</string>
+    <string name="localized">%s localized</string>
+    <string name="open_request_result">Open</string>
+    <string name="btn_send">Send</string>
+    <string name="type_contact_name">Type contact name</string>
+    <string name="contact_name_error">Please type a contact name</string>
+    <string name="sign_in_with_google_account">Sign in with Google account</string>
+    <string name="or_sign_in_with_email_password">or sign in with email/password</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="create_account">Create account</string>
+    <string name="email_empty_error">Email should not be empty</string>
+    <string name="password_empty_error">Password should not be empty</string>
+    <string name="sign_out">Sign out</string>
+    <string name="about_me">About me</string>
+    <string name="display_name">display name</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="display_name_mandatory_error">User display name is required</string>
+    <string name="my_requests">My requests</string>
+    <string name="ok">OK</string>
+    <string name="gps_disabled_message">You have to activate GPS to continue</string>
+    <string name="enable_gps">Activer le GPS</string>
+</resources>
