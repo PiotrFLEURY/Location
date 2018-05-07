@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.squareup.picasso.Picasso
 import fr.piotr.location.R
 import kotlinx.android.synthetic.main.fragment_user_profile.*
 
@@ -23,6 +24,11 @@ class UserProfileFragment:BottomSheetDialogFragment(){
         super.onViewCreated(view, savedInstanceState)
 
         val user = FirebaseAuth.getInstance().currentUser!!
+
+        val photoUrl = user.photoUrl.toString()
+        if(!TextUtils.isEmpty(photoUrl)) {
+            Picasso.with(activity).load(photoUrl).into(user_profile_iv_photo)
+        }
 
         tv_user_profie_email.text = user.email
         et_user_profile_display_name.setText(user.displayName)
@@ -62,5 +68,9 @@ class UserProfileFragment:BottomSheetDialogFragment(){
             Toast.makeText(activity, "Profile updated", Toast.LENGTH_SHORT).show()
             dismiss()
         }
+    }
+
+    private fun changePhoto() {
+        Toast.makeText(activity, "COMING SOON", Toast.LENGTH_SHORT).show()
     }
 }
