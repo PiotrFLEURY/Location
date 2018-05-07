@@ -56,4 +56,8 @@
     <string name="profile">Profile</string>
     <string name="current_location">Current location</string>
     <string name="open_google_maps">Open Google maps</string>
+    <string name="delete">delete</string>
+    <string name="delete_history_confirmation_message">Delete all your history ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

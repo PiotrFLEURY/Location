@@ -6,8 +6,8 @@
         android:gradientRadius="200dp"
         android:centerY="100%p"
         android:centerX="100%p"
-        android:startColor="@color/grey300"
-        android:endColor="@color/grey400"
+        android:startColor="@color/grey400"
+        android:endColor="@color/accent"
         />
 
 </shape>

@@ -17,6 +17,10 @@ fun getUsers(): DatabaseReference = FirebaseDatabase.getInstance().getReference(
 
 fun getHistory(): DatabaseReference = getRootNode().ref.child("history")
 
+fun deleteHistory() {
+    getHistory().ref.removeValue()
+}
+
 fun getSharedNode(): DatabaseReference = FirebaseDatabase.getInstance().getReference("shared")
 
 fun getRequests(): DatabaseReference = getSharedNode().ref.child("requests")

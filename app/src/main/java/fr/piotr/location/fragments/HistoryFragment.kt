@@ -17,9 +17,7 @@ import android.support.v4.content.ContextCompat.checkSelfPermission
 import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.google.firebase.database.ChildEventListener
@@ -27,6 +25,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import fr.piotr.location.*
+import fr.piotr.location.database.deleteHistory
 import fr.piotr.location.database.getHistory
 import fr.piotr.location.listeners.MyLocationListener
 import fr.piotr.location.listeners.ScollListener
@@ -96,6 +95,7 @@ class HistoryFragment: Fragment(), MyLocationListener {
     private lateinit var history: DatabaseReference
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
         return inflater?.inflate(R.layout.fragment_history, container, false)
     }
 
@@ -127,6 +127,18 @@ class HistoryFragment: Fragment(), MyLocationListener {
         val locationManager = activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         locationManager.removeUpdates(this)
         history.removeEventListener(historyChildEventListener)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.history_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.menu_delete -> confirmDeleteHistory()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun showProgress(){
@@ -248,5 +260,13 @@ class HistoryFragment: Fragment(), MyLocationListener {
 
         history.child(Calendar.getInstance().timeInMillis.toString()).setValue(asCoordinates(location))
 
+    }
+
+    private fun confirmDeleteHistory() {
+        AlertDialog.Builder(activity)
+                .setMessage(getString(R.string.delete_history_confirmation_message))
+                .setPositiveButton(getString(R.string.yes), { _, _ -> deleteHistory() })
+                .setNegativeButton(getString(R.string.no), { _, _ -> /*NOTHING TO DO*/})
+                .show()
     }
 }

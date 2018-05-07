@@ -109,7 +109,6 @@ class MainActivity : AppCompatActivity() {
                 drawer_layout.openDrawer(GravityCompat.START)
                 return true
             }
-            R.id.menu_exit -> signOut()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -133,6 +132,7 @@ class MainActivity : AppCompatActivity() {
     private fun onDrawerNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.drawer_menu_profile -> openProfile()
+            R.id.drawer_menu_exit -> signOut()
         }
         return true
     }
