@@ -6,15 +6,19 @@ import android.support.design.widget.BottomSheetDialogFragment
 import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.squareup.picasso.Picasso
 import fr.piotr.location.R
 import fr.piotr.location.database.getUsers
+import fr.piotr.location.database.pojos.Contact
 import kotlinx.android.synthetic.main.fragment_contact_selection.*
 
 typealias Mode = String
@@ -26,19 +30,31 @@ const val EVENT_SEND_REQUEST = "EVENT_SEND_REQUEST"
 const val EXTRA_SEND_REQUEST_CONTACT_NAME = "EXTRA_SEND_REQUEST_CONTACT_NAME"
 const val EXTRA_SEND_REQUEST_MODE = "EXTRA_SEND_REQUEST_MODE"
 
-class ContactHolder(val view: TextView?): RecyclerView.ViewHolder(view)
+class ContactHolder(val view: View?): RecyclerView.ViewHolder(view) {
 
-class ContactsAdapter(private val runnable: (contactName:String)->Unit, val contacts:MutableList<String> = mutableListOf()): RecyclerView.Adapter<ContactHolder>() {
+    fun bind(contact:Contact) {
+        val ivPhoto = view?.findViewById<ImageView>(R.id.cell_contact_photo)
+        val photoUrl = contact.photoUrl
+        if(!TextUtils.isEmpty(photoUrl)) {
+            Picasso.with(view?.context).load(photoUrl).into(ivPhoto)
+        }
+
+        view?.findViewById<TextView>(R.id.cell_contact_name)?.text = contact.displayName
+    }
+
+}
+
+class ContactsAdapter(private val runnable: (contactName:String)->Unit, val contacts:MutableList<Contact> = mutableListOf()): RecyclerView.Adapter<ContactHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ContactHolder {
-        return ContactHolder(LayoutInflater.from(parent?.context).inflate(android.R.layout.simple_list_item_1, parent, false) as TextView?)
+        return ContactHolder(LayoutInflater.from(parent?.context).inflate(R.layout.cell_contact_selection, parent, false))
     }
 
     override fun getItemCount(): Int = contacts.size
 
     override fun onBindViewHolder(holder: ContactHolder?, position: Int) {
-        holder?.view?.text = contacts[position]
-        holder?.view?.setOnClickListener{runnable.invoke(contacts[position])}
+        holder?.bind(contacts[position])
+        holder?.view?.setOnClickListener{runnable.invoke(contacts[position].displayName)}
     }
 }
 
@@ -74,13 +90,13 @@ class ContactSelectionFragment: BottomSheetDialogFragment() {
             }
 
             override fun onChildAdded(p0: DataSnapshot?, p1: String?) {
-                val contact = p0?.getValue(String::class.java)!!
+                val contact = p0?.getValue(Contact::class.java)!!
                 contactsAdapter.contacts.add(contact)
                 contactsAdapter.notifyDataSetChanged()
             }
 
             override fun onChildRemoved(p0: DataSnapshot?) {
-                val contact = p0?.getValue(String::class.java)!!
+                val contact = p0?.getValue(Contact::class.java)!!
                 contactsAdapter.contacts.remove(contact)
                 contactsAdapter.notifyDataSetChanged()
             }

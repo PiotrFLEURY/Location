@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import fr.piotr.location.database.asUid
 import fr.piotr.location.database.getUsers
+import fr.piotr.location.database.pojos.Contact
 import fr.piotr.location.fragments.UserProfileFragment
 import kotlinx.android.synthetic.main.activity_authenticate.*
 
@@ -120,7 +121,7 @@ class AuthenticateActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFa
         if(TextUtils.isEmpty(user?.displayName)){
             UserProfileFragment().show(supportFragmentManager, "userProfileFragment")
         } else {
-            getUsers().child(asUid()).setValue(user?.displayName)
+            getUsers().child(asUid()).setValue(Contact(email = user?.email, displayName = user?.displayName!!, photoUrl = user.photoUrl?.toString()))
             Toast.makeText(this, getString(R.string.welcome_user, user?.displayName), Toast.LENGTH_LONG).show()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
