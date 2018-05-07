@@ -4,6 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import fr.piotr.location.database.pojos.Request
+import fr.piotr.location.database.pojos.Status
 
 fun userEmail() = FirebaseAuth.getInstance().currentUser!!.email!!
 
@@ -28,5 +29,10 @@ fun getRequests(): DatabaseReference = getSharedNode().ref.child("requests")
 fun getRequest(request: Request): DatabaseReference = getRequests().ref.child(request.uuid.toString())
 
 fun updateRequest(request: Request) {
+    getRequest(request).setValue(request)
+}
+
+fun setRequestStatus(request: Request, status: Status) {
+    request.status = status
     getRequest(request).setValue(request)
 }

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import fr.piotr.location.managers.LocationAppManager
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -68,6 +69,11 @@ class LocationAdapter(context: Context):RecyclerView.Adapter<LocationHolder>() {
 
     fun addLocation(location: LocationEntry){
         locationsHistory.add(location)
+        LocationAppManager.currentLocation = locationsHistory
+                .stream()
+                .max({p1, p2 -> p1.calendar.compareTo(p2.calendar)})
+                .get()
+                .coordinates
         notifyDataSetChanged()
     }
 

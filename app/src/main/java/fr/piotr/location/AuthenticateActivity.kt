@@ -122,7 +122,7 @@ class AuthenticateActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFa
             UserProfileFragment().show(supportFragmentManager, "userProfileFragment")
         } else {
             getUsers().child(asUid()).setValue(Contact(email = user?.email, displayName = user?.displayName!!, photoUrl = user.photoUrl?.toString()))
-            Toast.makeText(this, getString(R.string.welcome_user, user?.displayName), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.welcome_user, user.displayName), Toast.LENGTH_LONG).show()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

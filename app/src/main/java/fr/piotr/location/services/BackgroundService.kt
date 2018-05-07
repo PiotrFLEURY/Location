@@ -17,13 +17,10 @@ import android.support.v4.app.NotificationCompat
 import android.support.v4.content.LocalBroadcastManager
 import com.google.firebase.database.ChildEventListener
 import fr.piotr.location.*
-import fr.piotr.location.database.getHistory
-import fr.piotr.location.database.getRequest
-import fr.piotr.location.database.getRequests
+import fr.piotr.location.database.*
 import fr.piotr.location.database.listeners.*
 import fr.piotr.location.database.pojos.Request
 import fr.piotr.location.database.pojos.Status
-import fr.piotr.location.database.updateRequest
 import fr.piotr.location.managers.LocationAppManager
 import java.util.*
 
@@ -211,8 +208,7 @@ class BackgroundService:Service(){
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.cancel(REQUEST_RESULT_NOTIFICATION_ID)
 
-        request.status = Status.OPENED
-        getRequest(request).setValue(request)
+        setRequestStatus(request, Status.OPENED)
     }
 
 }

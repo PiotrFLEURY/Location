@@ -11,4 +11,8 @@ enum class Status {
     OPENED
 }
 
-data class Request(val uuid: String = "", val date: Date = Date(), val from:String="any", val target:String="target", var status:Status=Status.PENDING, var coordinates: Coordinates=Coordinates()): Serializable
+data class Request(val uuid: String = "", val date: Date = Date(), val from:String="any", val target:String="target", var status:Status=Status.PENDING, var coordinates: Coordinates=Coordinates()): Serializable, Comparable<Request> {
+    override fun compareTo(other: Request): Int {
+        return date.compareTo(other.date)
+    }
+}
